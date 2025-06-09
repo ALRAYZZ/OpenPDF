@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Pdfium.Net.SDK" Version="4.99.2704" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\OpenPDF.Helpers\OpenPDF.Helpers.csproj" />
     <ProjectReference Include="..\OpenPDF.Models\OpenPDF.Models.csproj" />
   </ItemGroup>
