@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\OpenPDF.Core\OpenPDF.Core.csproj" />
+    <ProjectReference Include="..\OpenPDF.Helpers\OpenPDF.Helpers.csproj" />
+    <ProjectReference Include="..\OpenPDF.Models\OpenPDF.Models.csproj" />
+    <ProjectReference Include="..\OpenPDF.Services\OpenPDF.Services.csproj" />
+  </ItemGroup>
+
+</Project>
