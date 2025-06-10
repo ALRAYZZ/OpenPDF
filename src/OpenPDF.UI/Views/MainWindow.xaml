@@ -1,0 +1,67 @@
+﻿<Window x:Class="OpenPDF.UI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:OpenPDF.UI"
+        mc:Ignorable="d"
+        Title="OpenPDF" Height="600" Width="800"
+        WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <materialDesign:BundledTheme BaseTheme="Light" PrimaryColor="Indigo" SecondaryColor="Cyan"/>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesign3.Defaults.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/> <!--SideBar-->
+            <ColumnDefinition Width="*"/>   <!--Main Content-->
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>  <!--Toolbar-->
+            <RowDefinition Height="*"/>     <!--Page Viewer-->
+            <RowDefinition Height="Auto"/> <!--Status Bar-->
+        </Grid.RowDefinitions>
+        
+        
+        <!--Sidebar-->
+        <materialDesign:Card Grid.Column="0" Grid.Row="1" Margin="5" Width="150">
+            <Expander Header="Thumbnails" IsExpanded="False">
+                <ListBox x:Name="ThumbnailList" SelectionChanged="ThumbnailList_SelectionChanged">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding Thumbnail}" Width="100" Margin="5"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Expander>
+        </materialDesign:Card>
+        
+        <!--Toolbar-->
+        <materialDesign:Card Grid.Column="1" Grid.Row="0" Margin="5">
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <Button x:Name="OpenButton" Style="{StaticResource MaterialDesignFlatButton}" Content="Open PDF" Click="OpenButton_Click"/>
+                <Button x:Name="ZoomInButton" Style="{StaticResource MaterialDesignFlatButton}" Content="Zoom In" Click="ZoomInButton_Click"/>
+                <Button x:Name="ZoomOutButton" Style="{StaticResource MaterialDesignFlatButton}" Content="Zoom Out" Click="ZoomOutButton_Click"/>
+                <Button x:Name="NextPageButton" Style="{StaticResource MaterialDesignFlatButton}" Content="Next" Click="NextPageButton_Click"/>
+                <Button x:Name="PreviousPageButton" Style="{StaticResource MaterialDesignFlatButton}" Content="Previous" Click="PreviousPageButton_Click"/>
+                <Button x:Name="Print" Style="{StaticResource MaterialDesignFlatButton}" Content="Print" Click="PrintButton_Click"/>
+                <TextBox x:Name="PageInput" materialDesign:HintAssist.Hint="Page" Width="50" Margin="5" KeyDown="PageInput_KeyDown" />
+            </StackPanel>
+        </materialDesign:Card>
+        
+        <!--Page Viewer-->
+        <ScrollViewer Grid.Column="1" Grid.Row="1" x:Name="PageScrollViewer" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+            <Image x:Name="PdfImage" Stretch="Uniform"/>
+        </ScrollViewer>
+        
+        <!--Status Bar-->
+        <materialDesign:Card Grid.Column="1"  Grid.Row="2" Margin="5">
+            <TextBlock x:Name="StatusText" Margin="5" Text="No PDF loaded"/>
+        </materialDesign:Card>
+    </Grid>
+</Window>

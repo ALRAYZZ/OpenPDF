@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MaterialDesignThemes" Version="5.2.1" />
     <PackageReference Include="Pdfium.Net.SDK" Version="4.99.2704" />
     <PackageReference Include="System.Drawing.Common" Version="9.0.5" />
   </ItemGroup>
